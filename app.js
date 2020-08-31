@@ -62,8 +62,21 @@ yargs.version('1.1.0')
 yargs.command({
     command: 'add', /* this is how you give command name for your app.  */
     describe: 'Add new note', /*this is how you see description when using --help flag */
-    handler: function() { /*this is what will happen when user types command */
-        console.log('Adding a new note!')
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true, /*This key value pair makes sure that input field is required*/
+            type: 'string'
+        },
+        body: {
+            describe: 'Note Body',
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: function(argv) { /*this is what will happen when user types command */
+        console.log('Title: ' + argv.title)
+        console.log('Body: ' + argv.body)
     }
 })
 
@@ -82,15 +95,22 @@ yargs.command({
     command: 'list',
     describe: 'list all previous notes',
     handler: function() {
-        console.log('Listing your notes now!')
+        console.log('Listing your notes now!', argv)
     }
 })
 
 
 //create read command
-// yargs.command({})
+yargs.command({
+    command: 'read',
+    describe: 'read a single note',
+    handler: function() {
+        console.log('here is your note')
+    }
+})
 
 
-
+yargs.parse() /*another way to parse through arguments */
 
 console.log(yargs.argv)
+console.log(process.argv)
