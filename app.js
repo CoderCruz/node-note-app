@@ -39,7 +39,7 @@
 
 const chalk = require('chalk')
 const yargs = require('yargs')
-const getNotes = require('./notes.js')
+const notes = require('./notes.js')
 
 //example on how to check user input and control what to do with that data.
 // const command = process.argv[2]
@@ -75,8 +75,7 @@ yargs.command({
         }
     },
     handler: function(argv) { /*this is what will happen when user types command */
-        console.log('Title: ' + argv.title)
-        console.log('Body: ' + argv.body)
+        notes.addNote(argv.title, argv.body)
     }
 })
 
