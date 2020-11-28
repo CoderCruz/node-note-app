@@ -74,18 +74,28 @@ yargs.command({
             type: "string"
         }
     },
-    handler: function(argv) { /*this is what will happen when user types command */
+    /*this is what will happen when user types command */
+    handler(argv) {
         notes.addNote(argv.title, argv.body)
     }
+    
 })
 
 //create remove command
 yargs.command({
     command: 'remove',
     describe: 'Removing a note',
-    handler: function() {
-        console.log('Removing your note now!')
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.removeNote(argv.title)
     }
+    
 })
 
 
@@ -93,8 +103,8 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'list all previous notes',
-    handler: function() {
-        console.log('Listing your notes now!', argv)
+    handler() {
+        notes.listNotes()
     }
 })
 
@@ -103,13 +113,20 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'read a single note',
-    handler: function() {
-        console.log('here is your note')
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        notes.readNote(argv.title)
     }
 })
 
 
 yargs.parse() /*another way to parse through arguments */
 
-console.log(yargs.argv)
-console.log(process.argv)
+// console.log(yargs.argv)
+// console.log(process.argv)
