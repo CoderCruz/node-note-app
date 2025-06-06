@@ -11,10 +11,10 @@ QuickNote CLI is a lightweight command-line application built with Node.js that 
 
 ## Examples
 
-node app.js add --title="Meeting Notes" --body="Discuss project roadmap and deadlines."
-node app.js list
-node app.js read --title="Meeting Notes"
-node app.js remove --title="Meeting Notes"
+- node app.js add --title="Meeting Notes" --body="Discuss project roadmap and deadlines."
+- node app.js list
+- node app.js read --title="Meeting Notes"
+- node app.js remove --title="Meeting Notes"
 
 
 ## Tech Stack
