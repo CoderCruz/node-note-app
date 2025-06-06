@@ -1,9 +1,7 @@
-console.log('util is running')
-
-const name = "Jose"
-
+console.log("util is running");
 const add = function (a, b) {
-    return a + b
-}
+  return a + b;
+};
 
-module.exports = add
+module.exports = add;
+
